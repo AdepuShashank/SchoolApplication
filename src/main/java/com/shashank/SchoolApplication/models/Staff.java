@@ -7,13 +7,13 @@ import java.util.Date;
 @Entity
 public class Staff extends BaseModel{
     private String name;
-    private String subject;
+    private String role;
     private Gender gender;
     private String number;
 
-    public Staff(String name, String subject, Gender gender, String number) {
+    public Staff(String name, String role, Gender gender, String number) {
         this.name = name;
-        this.subject = subject;
+        this.role = role;
         this.gender = gender;
         this.number = number;
     }
@@ -30,12 +30,12 @@ public class Staff extends BaseModel{
         this.name = name;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getRole() {
+        return role;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public Gender getGender() {
@@ -58,7 +58,7 @@ public class Staff extends BaseModel{
     public String toString() {
         return "Staff{" +
                 "name='" + name + '\'' +
-                ", subject='" + subject + '\'' +
+                ", subject='" + role + '\'' +
                 ", gender=" + gender +
                 ", number='" + number + '\'' +
                 '}';

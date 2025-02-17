@@ -39,7 +39,7 @@ public class StaffService {
             StaffDTO sfDto = new StaffDTO();
 
             sfDto.setName(s.getName());
-            sfDto.setSubject(s.getSubject());
+            sfDto.setRole(s.getRole());
             sfDto.setGender(s.getGender());
             sfDto.setNumber(s.getNumber());
 
@@ -54,7 +54,7 @@ public class StaffService {
         Staff newStaff = staffRepository.save(staff);
         return newStaff;
     }
-    public Staff UpdateStaff(long id,String name,String subject,String number) throws StaffNotFoundException {
+    public Staff UpdateStaff(long id,String name,String role,String number) throws StaffNotFoundException {
         Optional<Staff> previouslySaved = staffRepository.findById(id);
         if(previouslySaved.isEmpty()) {
             throw new StaffNotFoundException("no one with that id");
@@ -65,8 +65,8 @@ public class StaffService {
             if(name!=null) {
                 updateStaff.setName(name);
             }
-            if(subject!=null) {
-                updateStaff.setSubject(subject);
+            if(role!=null) {
+                updateStaff.setRole(role);
             }
             if(number!=null) {
                 updateStaff.setNumber(number);

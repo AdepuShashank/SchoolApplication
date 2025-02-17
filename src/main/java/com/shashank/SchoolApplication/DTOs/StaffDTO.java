@@ -4,13 +4,13 @@ import com.shashank.SchoolApplication.models.Gender;
 
 public class StaffDTO {
     private String name;
-    private String subject;
+    private String role;
     private Gender gender;
     private String number;
 
     public StaffDTO(String name, String subject, Gender gender, String number) {
         this.name = name;
-        this.subject = subject;
+        this.role = role;
         this.gender = gender;
         this.number = number;
     }
@@ -26,12 +26,12 @@ public class StaffDTO {
         this.name = name;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getRole() {
+        return role;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public Gender getGender() {

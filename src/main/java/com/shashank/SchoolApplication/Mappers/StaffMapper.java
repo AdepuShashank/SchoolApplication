@@ -9,15 +9,15 @@ public class StaffMapper {
     public Staff toStaff(StaffDTO staffDTO) {
         Staff staff = new Staff();
         staff.setName(staffDTO.getName());
-        staff.setSubject(staffDTO.getSubject());
+        staff.setRole(staffDTO.getRole());
         staff.setNumber(staffDTO.getNumber());
-        staff.setSubject(staffDTO.getSubject());
+        staff.setRole(staffDTO.getRole());
         return staff;
     }
     public StaffDTO toStaffDto(Staff staff){
         StaffDTO staffDTO = new StaffDTO();
         staffDTO.setName(staff.getName());
-        staffDTO.setSubject(staff.getSubject());
+        staffDTO.setRole(staff.getRole());
         staffDTO.setNumber(staff.getNumber());
         staffDTO.setGender(staff.getGender());
 

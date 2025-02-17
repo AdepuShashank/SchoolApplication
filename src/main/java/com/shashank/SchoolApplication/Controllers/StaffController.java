@@ -41,7 +41,7 @@ public class StaffController {
                              @RequestBody Staff staff) {
         Staff updateStaff = staffService.UpdateStaff(id,
                 staff.getName(),
-                staff.getSubject(),
+                staff.getRole(),
                 staff.getNumber());
 
         return updateStaff;
