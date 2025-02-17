@@ -1,5 +1,7 @@
 package com.shashank.SchoolApplication.Controllers;
 
+import com.shashank.SchoolApplication.DTOs.StaffDTO;
+import com.shashank.SchoolApplication.Mappers.StaffMapper;
 import com.shashank.SchoolApplication.models.Staff;
 import com.shashank.SchoolApplication.services.StaffService;
 import org.springframework.web.bind.annotation.*;
@@ -9,24 +11,28 @@ import java.util.List;
 @RestController
 public class StaffController {
     StaffService staffService;
+    StaffMapper staffMapper;
 
-    public StaffController(StaffService staffService) {
+    public StaffController(StaffService staffService,StaffMapper staffMapper) {
         this.staffService = staffService;
+        this.staffMapper = staffMapper;
     }
     @GetMapping("/staff/{id}")
-    public Staff getById(@PathVariable("id") long id ) {
+    public StaffDTO getById(@PathVariable("id") long id ) {
         Staff sf = staffService.GetSingleStaff(id);
-        return sf;
+        StaffDTO sfDto = staffMapper.toStaffDto(sf);
+        return sfDto;
     }
     @GetMapping("/staff")
-    public List<Staff> getAllStaff() {
-        List<Staff> allStaff = staffService.GetAllStaff();
+    public List<StaffDTO> getAllStaff() {
+        List<StaffDTO> allStaff = staffService.GetAllStaff();
         return allStaff;
     }
 
     @PostMapping("/staff")
     public Staff saveStaff(@RequestBody Staff staff) {
         Staff newStaff = staffService.SaveStaff(staff);
+
         return newStaff;
     }
 

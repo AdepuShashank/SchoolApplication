@@ -1,18 +1,24 @@
 package com.shashank.SchoolApplication.services;
 
+
+import com.shashank.SchoolApplication.DTOs.StudentDTO;
 import com.shashank.SchoolApplication.Exceptionhandler.StudentNotFoundException;
+import com.shashank.SchoolApplication.Mappers.StudentMapper;
 import com.shashank.SchoolApplication.Repository.StudentRepository;
 import com.shashank.SchoolApplication.models.Student;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class StudentService {
     StudentRepository studentRepository;
-    public StudentService(StudentRepository studentRepository){
+    StudentMapper studentMapper;
+    public StudentService(StudentRepository studentRepository,StudentMapper studentMapper) {
         this.studentRepository = studentRepository;
+        this.studentMapper = studentMapper;
     }
 
     public Student getSingleStudentById(long id) throws StudentNotFoundException {
@@ -27,9 +33,22 @@ public class StudentService {
         }
         return student;
     }
-    public List<Student> GetAllStudents() {
+    public List<StudentDTO> GetAllStudents() {
+        List<Student> students = studentRepository.findAll();
 
-        List<Student> allstudents = studentRepository.findAll();
+        List<StudentDTO> allstudents = new ArrayList<>();
+
+        for(Student s : students){
+            StudentDTO sDTO = new StudentDTO();
+            sDTO.setId(s.getId());
+            sDTO.setName(s.getName());
+            sDTO.setEmail(s.getEmail());
+            sDTO.setNumber(s.getNumber());
+            sDTO.setSection(s.getSection());
+            sDTO.setStandard(s.getStandard());
+
+            allstudents.add(sDTO);
+        }
 
         return allstudents;
     }

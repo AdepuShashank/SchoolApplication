@@ -1,5 +1,7 @@
 package com.shashank.SchoolApplication.Controllers;
 
+import com.shashank.SchoolApplication.DTOs.StudentDTO;
+import com.shashank.SchoolApplication.Mappers.StudentMapper;
 import com.shashank.SchoolApplication.models.Student;
 import com.shashank.SchoolApplication.services.StudentService;
 import org.springframework.web.bind.annotation.*;
@@ -11,20 +13,26 @@ import java.util.Optional;
 public class StudentController {
 
     StudentService studentService;
+    StudentMapper studentMapper;
 
-    public StudentController(StudentService studentService){
+    public StudentController(StudentService studentService,StudentMapper studentMapper ){
         this.studentService = studentService;
+        this.studentMapper = studentMapper;
     }
 
     @GetMapping("/student/{id}")
-    public Student getSingleStudentById(@PathVariable("id") long id){
+    public StudentDTO getSingleStudentById(@PathVariable("id") long id){
         Student stu = studentService.getSingleStudentById(id);
-        return stu;
+        StudentDTO mappedstu = studentMapper.toStudentDTO(stu);
+        return mappedstu;
     }
 
     @GetMapping("/student")
-    public List<Student> getAllStudents(){
-        List<Student> students = studentService.GetAllStudents();
+    public List<StudentDTO> getAllStudents(){
+        List<StudentDTO> students = studentService.GetAllStudents();
+
+
+
         return students;
     }
     @PostMapping("/student")

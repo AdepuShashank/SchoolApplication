@@ -1,10 +1,12 @@
 package com.shashank.SchoolApplication.services;
 
+import com.shashank.SchoolApplication.DTOs.StaffDTO;
 import com.shashank.SchoolApplication.Exceptionhandler.StaffNotFoundException;
 import com.shashank.SchoolApplication.Repository.StaffRepository;
 import com.shashank.SchoolApplication.models.Staff;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,9 +31,23 @@ public class StaffService {
         }
         return staff;
     }
-    public List<Staff> GetAllStaff() {
+    public List<StaffDTO> GetAllStaff() {
         List<Staff> allStaff = staffRepository.findAll();
-        return allStaff;
+        List<StaffDTO> sDTO = new ArrayList<>();
+
+        for(Staff s : allStaff){
+            StaffDTO sfDto = new StaffDTO();
+
+            sfDto.setName(s.getName());
+            sfDto.setSubject(s.getSubject());
+            sfDto.setGender(s.getGender());
+            sfDto.setNumber(s.getNumber());
+
+            sDTO.add(sfDto);
+
+        }
+
+        return sDTO;
     }
 
     public Staff SaveStaff(Staff staff) {
