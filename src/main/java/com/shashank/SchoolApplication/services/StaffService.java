@@ -5,6 +5,7 @@ import com.shashank.SchoolApplication.Repository.StaffRepository;
 import com.shashank.SchoolApplication.models.Staff;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,4 +29,49 @@ public class StaffService {
         }
         return staff;
     }
+    public List<Staff> GetAllStaff() {
+        List<Staff> allStaff = staffRepository.findAll();
+        return allStaff;
+    }
+
+    public Staff SaveStaff(Staff staff) {
+        Staff newStaff = staffRepository.save(staff);
+        return newStaff;
+    }
+    public Staff UpdateStaff(long id,String name,String subject,String number) throws StaffNotFoundException {
+        Optional<Staff> previouslySaved = staffRepository.findById(id);
+        if(previouslySaved.isEmpty()) {
+            throw new StaffNotFoundException("no one with that id");
+        }
+        else {
+            Staff updateStaff = previouslySaved.get();
+
+            if(name!=null) {
+                updateStaff.setName(name);
+            }
+            if(subject!=null) {
+                updateStaff.setSubject(subject);
+            }
+            if(number!=null) {
+                updateStaff.setNumber(number);
+            }
+            Staff updatedStaff = staffRepository.save(updateStaff);
+
+            return updatedStaff;
+        }
+    }
+    public String DeleteSingleStaff(long id) throws StaffNotFoundException {
+        Optional<Staff> staffInDB = staffRepository.findById(id);
+        if(staffInDB.isEmpty())
+        {
+            throw new StaffNotFoundException("not found");
+        }
+        else
+        {
+            staffRepository.deleteById(id);
+        }
+        return "Deleted Staff " + id;
+    }
+
+
 }
