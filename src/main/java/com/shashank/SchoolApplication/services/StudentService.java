@@ -33,6 +33,7 @@ public class StudentService {
         }
         return student;
     }
+
     public List<StudentDTO> GetAllStudents() {
         List<Student> students = studentRepository.findAll();
 
@@ -52,11 +53,13 @@ public class StudentService {
 
         return allstudents;
     }
+
     public Student SaveStudent(Student student) {
         Student stud = studentRepository.save(student);
 
         return stud;
     }
+
     public Student UpdateSingleStudent(long id,String name,String email,int standard,String section,String number) throws StudentNotFoundException
     {
 
@@ -85,6 +88,7 @@ public class StudentService {
             return UpdatedStudent;
         }
     }
+
     public String DeleteSingleStudent(long id) throws StudentNotFoundException {
         Optional<Student> studentInDB = studentRepository.findById(id);
         if (studentInDB.isEmpty()) {

@@ -37,4 +37,21 @@ public class FacultyController {
         Faculty postFaculty = facultyService.saveFaculty(faculty);
         return postFaculty;
     }
+
+    @PutMapping("/faculty/{id}")
+    public FacultyDTO UpdateFaculty(@PathVariable("id") long id ,@RequestBody FacultyDTO facultyDTO){
+        FacultyDTO updateFaculty = facultyService.UpdateFaculty(id,
+                facultyDTO.getName(),
+                facultyDTO.getEmail(),
+                facultyDTO.getSection(),
+                facultyDTO.getNumber());
+        return updateFaculty;
+
+    }
+
+    @DeleteMapping("/faculty/{id}")
+    public String DeleteFaculty(@PathVariable("id") long id){
+
+        return facultyService.deleteFaculty(id);
+    }
 }

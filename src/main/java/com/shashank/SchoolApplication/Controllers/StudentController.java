@@ -35,6 +35,7 @@ public class StudentController {
 
         return students;
     }
+
     @PostMapping("/student")
     public Student saveStudent(@RequestBody Student student) {
         Student stud = studentService.SaveStudent(student);

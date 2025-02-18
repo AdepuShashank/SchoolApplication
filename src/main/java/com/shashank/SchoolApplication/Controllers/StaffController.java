@@ -17,12 +17,14 @@ public class StaffController {
         this.staffService = staffService;
         this.staffMapper = staffMapper;
     }
+
     @GetMapping("/staff/{id}")
     public StaffDTO getById(@PathVariable("id") long id ) {
         Staff sf = staffService.GetSingleStaff(id);
         StaffDTO sfDto = staffMapper.toStaffDto(sf);
         return sfDto;
     }
+
     @GetMapping("/staff")
     public List<StaffDTO> getAllStaff() {
         List<StaffDTO> allStaff = staffService.GetAllStaff();
@@ -49,6 +51,7 @@ public class StaffController {
 
     @DeleteMapping("staff/{id}")
     public String deleteStaff(@PathVariable("id")long id) {
+
         return staffService.DeleteSingleStaff(id);
     }
 
