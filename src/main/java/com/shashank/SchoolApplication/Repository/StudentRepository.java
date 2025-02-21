@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface StudentRepository extends JpaRepository<Student,Long> {
     List<Student> findBySection(String section);
+    List<Student> findByStandard(int standard);
+    List<Student> findByStandardAndSection(int standard, String section);
 }

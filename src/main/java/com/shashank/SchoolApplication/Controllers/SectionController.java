@@ -23,10 +23,5 @@ public class SectionController {
         return sdto;
     }
 
-//    @GetMapping("allsections")
-//    public List<Section>  getAllSections()
-//    {
-//     List<Section>   allSections = sectionService.getSections();
-//        return allSections;
-//    }
+
 }

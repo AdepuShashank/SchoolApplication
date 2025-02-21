@@ -62,5 +62,14 @@ public class StudentDTO {
         this.number = number;
     }
 
-
+    @Override
+    public String toString() {
+        return "StudentDTO{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", standard=" + standard +
+                ", section='" + section + '\'' +
+                ", number='" + number + '\'' +
+                '}';
+    }
 }

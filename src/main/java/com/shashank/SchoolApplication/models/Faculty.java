@@ -7,13 +7,15 @@ public class Faculty extends BaseModel{
     private long faculty_id;
     private String name;
     private String email;
+    private int standard;
     private String section;
     private String number;
 
-    public Faculty(int faculty_id, String name, String email, String section, String number) {
+    public Faculty(int faculty_id, String name, String email,int standard, String section, String number) {
         this.faculty_id = faculty_id;
         this.name = name;
         this.email = email;
+        this.standard = standard;
         this.section = section;
         this.number = number;
     }
@@ -61,12 +63,21 @@ public class Faculty extends BaseModel{
         this.number = number;
     }
 
+    public int getStandard() {
+        return standard;
+    }
+
+    public void setStandard(int standard) {
+        this.standard = standard;
+    }
+
     @Override
     public String toString() {
         return "Faculty{" +
                 "faculty_id=" + faculty_id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
+                ", standard='" + standard + '\'' +
                 ", section='" + section + '\'' +
                 ", number='" + number + '\'' +
                 '}';

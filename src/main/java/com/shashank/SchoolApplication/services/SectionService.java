@@ -14,9 +14,9 @@ public class SectionService {
 
 
     StudentRepository studentRepository;
-    SectionRepository sectionRepository;
-    public SectionService(StudentRepository studentRepository,SectionRepository sectionRepository) {
-        this.sectionRepository = sectionRepository;
+
+    public SectionService(StudentRepository studentRepository) {
+
         this.studentRepository = studentRepository;
     }
 
@@ -36,15 +36,6 @@ public class SectionService {
        return allStudentsInThisSection;
    }
 
-//   public List<Section> getSections(){
-//        List<Section> section = sectionRepository.findAll();
-//        List<Section> allsections = new ArrayList<>();
-//        for(Section s : section){
-//            Section sec = new Section();
-//            sec.setSectionName(s.getSectionName());
-//            allsections.add(sec);
-//        }
-//        return allsections;
-//   }
+
 
 }
