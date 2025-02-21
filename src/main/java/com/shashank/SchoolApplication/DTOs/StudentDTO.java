@@ -1,15 +1,15 @@
 package com.shashank.SchoolApplication.DTOs;
 
 public class StudentDTO {
-    private long id;
+
     private String name;
     private String email;
     private int standard;
     private String section;
     private String number;
 
-    public StudentDTO(long id ,String name, String email, int standard, String section, String number) {
-        this.id = id;
+    public StudentDTO(String name, String email, int standard, String section, String number) {
+
         this.name = name;
         this.email = email;
         this.standard = standard;
@@ -20,13 +20,7 @@ public class StudentDTO {
     public StudentDTO() {
     }
 
-    public long getId() {
-        return id;
-    }
 
-    public void setId(Long long1) {
-        this.id = long1;
-    }
 
     public String getName() {
         return name;

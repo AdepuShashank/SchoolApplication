@@ -7,24 +7,24 @@ import org.springframework.stereotype.Component;
 @Component
 public class StudentMapper {
 
-    public StudentDTO toStudentDTO(Student student) {
+    public StudentDTO toStudentDTO(String name, String email, int standard, String section, String number) {
         StudentDTO dto = new StudentDTO();
 
-        dto.setName(student.getName());
-        dto.setEmail(student.getEmail());
-        dto.setStandard(student.getStandard());
-        dto.setSection(student.getSection());
-        dto.setNumber(student.getNumber());
+        dto.setName(name);
+        dto.setEmail(email);
+        dto.setStandard(standard);
+        dto.setSection(section);
+        dto.setNumber(number);
         return dto;
     }
-    public Student toStudent(StudentDTO dto) {
+    public Student toStudent(String name, String email, int standard, String section, String number) {
         Student student = new Student();
-        student.setName(dto.getName());
+        student.setName(name);
 
-        student.setEmail(dto.getEmail());
-        student.setStandard(dto.getStandard());
-        student.setSection(dto.getSection());
-        student.setNumber(dto.getNumber());
+        student.setEmail(email);
+        student.setStandard(standard);
+        student.setSection(section);
+        student.setNumber(number);
         return student;
     }
 }

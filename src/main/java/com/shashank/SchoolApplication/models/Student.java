@@ -1,6 +1,6 @@
 package com.shashank.SchoolApplication.models;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 @Entity
 public class Student extends BaseModel {
@@ -27,7 +27,8 @@ public class Student extends BaseModel {
         this.name = name;
     }
 
-    public String getEmail() {
+    public String getEmail()
+    {
         return email;
     }
 

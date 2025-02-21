@@ -23,7 +23,13 @@ public class StudentController {
     @GetMapping("/student/{id}")
     public StudentDTO getSingleStudentById(@PathVariable("id") long id){
         Student stu = studentService.getSingleStudentById(id);
-        StudentDTO mappedstu = studentMapper.toStudentDTO(stu);
+        Student StFDb = new Student();
+        StFDb.setName(stu.getName());
+        StFDb.setEmail(stu.getEmail());
+        StFDb.setStandard(stu.getStandard());
+        StFDb.setSection(stu.getSection());
+        StFDb.setNumber(stu.getNumber());
+        StudentDTO mappedstu = studentMapper.toStudentDTO(StFDb.getName(), StFDb.getEmail() ,StFDb.getStandard(), StFDb.getSection(), StFDb.getNumber());
         return mappedstu;
     }
 
@@ -38,7 +44,11 @@ public class StudentController {
 
     @PostMapping("/student")
     public Student saveStudent(@RequestBody Student student) {
-        Student stud = studentService.SaveStudent(student);
+        Student stud = studentService.SaveStudent(student.getName(),
+                student.getEmail(),
+                student.getStandard(),
+                student.getSection(),
+                student.getNumber());
         return stud;
     }
 

@@ -41,7 +41,7 @@ public class StudentService {
 
         for(Student s : students){
             StudentDTO sDTO = new StudentDTO();
-            sDTO.setId(s.getId());
+
             sDTO.setName(s.getName());
             sDTO.setEmail(s.getEmail());
             sDTO.setNumber(s.getNumber());
@@ -54,13 +54,21 @@ public class StudentService {
         return allstudents;
     }
 
-    public Student SaveStudent(Student student) {
-        Student stud = studentRepository.save(student);
+    public Student SaveStudent(String name, String email, int standard, String section, String number) {
+        Student stu = new Student();
+        stu.setName(name);
+        stu.setEmail(email);
+        stu.setNumber(number);
+        stu.setStandard(standard);
+        stu.setSection(section);
+
+
+        Student stud = studentRepository.save(stu);
 
         return stud;
     }
 
-    public Student UpdateSingleStudent(long id,String name,String email,int standard,String section,String number) throws StudentNotFoundException
+    public Student UpdateSingleStudent(long id, String name, String email, int standard, String section, String number) throws StudentNotFoundException
     {
 
         Optional<Student> stu = studentRepository.findById(id);
