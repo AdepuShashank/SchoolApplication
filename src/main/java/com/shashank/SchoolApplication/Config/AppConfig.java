@@ -33,5 +33,5 @@ public class AppConfig {
         redisTemplate.setHashValueSerializer(new GenericJackson2JsonRedisSerializer());
         return redisTemplate;
     }
-    //line test1
+    //line test2
 }
